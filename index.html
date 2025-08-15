@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictor Olame</title>
+    <link rel="icon" type="image/x-icon" href="./Dictor logo.png">
+    <script src="https://kit.fontawesome.com/5485a8e8c8.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #48cb14;
+            --secondary-color: #20b806;
+            --accent-color: #e81010;
+            --text-color: #333;
+            --light-color: #f8f9fa;
+            --dark-color: #144c0b;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin: 0 1rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .login-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .auth-container {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .user-info {
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        /* Home Section */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./My\ Graduation.jpg') no-repeat center center/cover;
+            color: white;
+        }
+
+        .home-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .home-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .home-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            animation: fadeIn 2s ease-in;
+        }
+
+        .cta-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .dropdown-container {
+            margin-top: 2rem;
+        }
+
+        .dropdown {
+            margin-bottom: 1rem;
+        }
+
+        .dropdown-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f1f1f1;
+            border-radius: 0 0 5px 5px;
+            margin-top: 5px;
+        }
+
+        .dropdown-content p {
+            padding: 1rem 0;
+        }
+
+        .dropdown.active .dropdown-content {
+            max-height: 200px;
+        }
+
+        .dropdown.active .dropdown-btn::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-btn::after {
+            content: '\25BC';
+            transition: var(--transition);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #f8f9fa;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-box {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .service-box p {
+            color: #666;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background-color: white;
+        }
+
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 1rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            color: #ccc;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .portfolio-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Blog Section */
+        .blog {
+            background-color: #f8f9fa;
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .blog-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-box-align: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .read-more:hover {
+            color: var(--accent-color);
+        }
+
+        .read-more::after {
+            content: '→';
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover::after {
+            transform: translateX(5px);
+        }
+
+        .blog-full {
+            display: none;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .blog-full h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .blog-full .blog-date {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-full p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .back-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .admin-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 10px;
+        }
+
+        .admin-btn {
+            padding: 0.3rem 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .edit-btn {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* ---------------------------------Contact Section-------------------------------- */
+        .contact {
+            background-color: #fff;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .social-links i{
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 50%;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            min-width: 50px;
+        }
+
+        .contact-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary-color);
+        }
+
+        .contact-text p, .contact-text a {
+            color: #666;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-text a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-form {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /*------------------- Login Modal-------------------- */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+        }
+
+        .login-image {
+            flex: 1;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./login.jpg') no-repeat center center/cover;
+            border-radius: 10px 0 0 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .login-image h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .login-image p {
+            text-align: center;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .login-form {
+            flex: 1;
+            padding: 3rem;
+        }
+
+        .login-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h2 {
+            color: var(--primary-color);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .forgot-password:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .login-submit {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .login-submit:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .switch-form {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+        }
+
+        .switch-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .switch-link:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        /* ----------------------Admin Dashboard--------------------- */
+        .admin-dashboard {
+            display: none;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-title {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .admin-logout {
+            background-color: #95a5a6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .admin-logout:hover {
+            background-color: #7f8c8d;
+        }
+
+        .admin-actions {
+            margin-bottom: 2rem;
+        }
+
+        .admin-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .admin-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .blog-form {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: rgb(244, 244, 244);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /*------------------------------------- Responsive Design-----------------------*/
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--dark-color);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .home-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .login-content {
+                flex-direction: column;
+            }
+
+            .login-image {
+                border-radius: 10px 10px 0 0;
+                padding: 1.5rem;
+            }
+
+            .login-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .home-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .cta-btn, .submit-btn, .login-submit {
+                font-size: 1rem;
+            }
+        }
+        #msg{
+    color: var(--secondary-color);
+    margin-top: -50px;
+    align-items: center;
+    text-align: center;
+    display: block;
+}
+    </style>
+    
+</head>
+
+<body>
+    <!-- ----------------------------------Navbar ----------------------------->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Dictor Olame<span>.</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="#blog" class="nav-link">My Blog</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact Me</a></li>
+            </ul>
+            <div class="auth-container">
+                <button class="login-btn" id="loginBtn">Login</button>
+                <div class="user-info" id="userInfo" style="display: none;"></div>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!------------------------------ Login Modal ----------------------->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <div class="login-image">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account and manage your portfolio. Admin users can post, edit, and delete blog content.</p>
+            </div>
+            <div class="login-form">
+                <div class="login-header">
+                    <h2>Login</h2>
+                    <button class="close-btn" id="closeBtn">&times;</button>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="login-submit">Login</button>
+                    <p class="switch-form">Don't have an account? <a href="#" class="switch-link">Register</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="container">
+            <div class="home-content">
+                <h1>Hey, I'm Dictor Olame</h1>
+                <p>A passionate web developer and designer focused on creating beautiful, functional websites and applications that provide exceptional user experiences.</p>
+                <a href="#contact" class="cta-btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="./DICTOR OLAME.png" alt="Dictor Olame">
+                </div>
+                <div class="about-content">
+                    <h3>Web Developer & Designer</h3>
+                    <p>I am a passionate web developer with over 5 years of experience in creating responsive and user-friendly websites.<br>
+                        My journey in web development started when I was in college, where I discovered my love for coding and design.<br>
+                        Since then, I've worked on numerous projects ranging from small business websites to complex web applications.<br>
+                        My expertise lies in front-end development, where I specialize in HTML, CSS, JavaScript, and modern frameworks like React.<br>
+                        I believe in writing clean, maintainable code and staying up-to-date with the latest web technologies and best practices.<br>
+                        When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through blog posts and tutorials.<br>
+                        I'm always eager to learn and grow as a developer.</p>
+                    
+                    <div class="dropdown-container">
+                        <div class="dropdown">
+                            <button class="dropdown-btn">My Philosophy <i class="arrow"></i></button>
+                            <div class="dropdown-content">
+                                <p>I believe that great web experiences are built on a foundation of clean code, intuitive design, and attention to detail. My approach combines technical expertise with creative problem-solving to deliver solutions that exceed client expectations.</p>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropdown-btn">Work Approach <i class="arrow"></i></button>
+                            <div class="dropdown-content">
+                                <p>I follow an agile development process, working closely with clients to understand their needs and deliver incremental improvements. I prioritize responsive design, accessibility, and performance optimization in all my projects.</p>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropdown-btn">Hobbies & Interests <i class="arrow"></i></button>
+                            <div class="dropdown-content">
+                                <p>Outside of coding, I enjoy photography, Listening to musics, and playing Volleyball. These creative outlets help me maintain a balanced perspective and inspire innovative solutions in my work. I also regularly attend tech meetups and conferences to stay connected with the developer community.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!----------------------- Services Section----------- -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-container">
+                <div class="service-box">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Custom website development using modern technologies and frameworks. I create responsive, accessible, and high-performance websites that work seamlessly across all devices.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>User-centered design approach that focuses on creating intuitive and engaging user experiences. I combine aesthetics with functionality to deliver designs that users love.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Apps</h3>
+                    <p>Development of cross-platform mobile applications using React Native and other modern frameworks. I create apps that provide native-like performance and user experience.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">🔍</div>
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your website's visibility in search engines with technical SEO, content optimization, and performance improvements that drive organic traffic and conversions.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">🛒</div>
+                    <h3>E-Commerce</h3>
+                    <p>Build and optimize online stores with secure payment processing, inventory management, and conversion-focused design to maximize your sales potential.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Graphic Design</h3>
+                    <p>Elevate your brand with custom graphic design tailored to your vision. From logos and branding materials to web graphics and marketing visuals, our creative team combines aesthetics and strategy to deliver impactful designs that capture attention and communicate your message effectively</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Portfolio</h2>
+            <div class="portfolio-container">
+                <div class="portfolio-item">
+                    <img src="./ecommerce-2015.jpg" alt="Project 1" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A fully responsive e-commerce website with product catalog, shopping cart, and secure payment processing.</p>
+                        <a href="#" class="portfolio-btn">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./web.png" alt="Project 2" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Website</h3>
+                        <p>A professional corporate website with CMS integration, blog section, and contact forms.</p>
+                        <a href="#" class="portfolio-btn">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./mobile app.png" alt="Project 3" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Mobile App</h3>
+                        <p>A cross-platform mobile application for task management with cloud synchronization.</p>
+                        <a href="#" class="portfolio-btn">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./port.jpg" alt="Project 4" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Portfolio Website</h3>
+                        <p>A creative portfolio website for a photographer with lightbox gallery and client management system.</p>
+                        <a href="#" class="portfolio-btn">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./social.jpg" alt="Project 5" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Social Network</h3>
+                        <p>A social networking platform with real-time messaging, user profiles, and content sharing.</p>
+                        <a href="#" class="portfolio-btn">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./landing.png" alt="Project 6" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Landing Page</h3>
+                        <p>High-converting landing page for a SaaS product with animation effects and lead capture forms.</p>
+                        <a href="#" class="portfolio-btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <h2 class="section-title">My Blog</h2>
+            
+            <!-- Admin Dashboard -->
+            <div class="admin-dashboard" id="adminDashboard">
+                <div class="admin-header">
+                    <h2 class="admin-title">Admin Dashboard</h2>
+                    <button class="admin-logout" id="adminLogout">Logout</button>
+                </div>
+                <div class="admin-actions">
+                    <button class="admin-btn" id="newPostBtn">Create New Post</button>
+                </div>
+            </div>
+
+            <!-- Blog Form -->
+            <div class="blog-form" id="blogForm">
+                <h3 id="formTitle">Create New Blog Post</h3>
+                <form id="postForm">
+                    <div class="form-group">
+                        <label for="postTitle">Title</label>
+                        <input type="text" id="postTitle" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postDate">Date</label>
+                        <input type="date" id="postDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="myfile">File Upload</label>
+                        <input type="file" id="myfile" class="form-control" placeholder="https://placehold.co/600x400">
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Content</label>
+                        <textarea id="postContent" class="form-control" rows="6" required></textarea>
+                    </div>
+                    <input type="hidden" id="postId">
+                    <button type="submit" class="submit-btn" id="submitPost">Publish Post</button>
+                    <button type="button" class="admin-logout" id="cancelPost" style="margin-left: 10px;">Cancel</button>
+                </form>
+            </div>
+
+            <!-- Blog Posts -->
+            <div class="blog-container" id="blogContainer">
+                <div class="blog-card">
+                    <img src="./python w.png" alt="Blog 1" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">June 15, 2023</div>
+                        <h3>The Future of Web Development</h3>
+                        <p>Web development is evolving at a rapid pace, with new frameworks and technologies emerging every year. From progressive web apps to serverless architectures, the landscape is changing how we build and deploy web applications. In this post, I'll explore the trends that are shaping the future of web development and how developers can stay ahead of the curve.</p>
+                        <a href="#" class="read-more" data-id="1">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="./122.png" alt="Blog 2" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">May 22, 2023</div>
+                        <h3>Designing for Accessibility</h3>
+                        <p>Accessibility should be a priority in every web project, not an afterthought. In this article, I share practical tips and techniques for creating websites that are inclusive and usable by everyone, regardless of their abilities or the devices they use. From semantic HTML to ARIA roles, learn how to make your websites more accessible.</p>
+                        <a href="#" class="read-more" data-id="2">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="./search.jpg" alt="Blog 3" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">April 10, 2023</div>
+                        <h3>Optimizing Website Performance</h3>
+                        <p>Website performance directly impacts user experience and search engine rankings. In this comprehensive guide, I cover the essential techniques for optimizing website speed, from image optimization and code minification to leveraging browser caching and content delivery networks. Implement these strategies to create faster, more efficient websites.</p>
+                        <a href="#" class="read-more" data-id="3">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="./Graduates.png" alt="Blog 4" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">August 15, 2025</div>
+                        <h3>Ink, Identity, and the Mississippi: How Saint Louis Helping Me Design Myself</h3>
+                        <p>From Bangalore Online classrooms to Saint Louis murals, my graphic design journey took a bold leap across continents. Armed with creativity from Saint Joseph College and fueled by midnight brainstorming sessions, I turned theory into art on city walls and digital screens. This is how I found my voice—one sketch, one risk, and one unexpected adventure at a time.</p>
+                        <a href="#" class="read-more" data-id="4">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="./effect of tech on huan right.png" alt="Blog 5" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">August 15, 2025</div>
+                        <h3>The Digital Dilemma: How Technology is Reshaping Human Rights</h3>
+                        <p>Technology shapes our world in seconds—but is it protecting or undermining our human rights? From surveillance to social media activism, the digital age is a double-edged sword. In this post, I explore how innovation empowers and endangers our freedoms—and what we can do to ensure tech serves humanity, not the other way around.</p>
+                        <a href="#" class="read-more" data-id="5">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Blog Content -->
+            <div class="blog-full" id="blogFull1">
+                <h2>The Future of Web Development</h2>
+                <div class="blog-date">June 15, 2023</div>
+                <p>Web development is undergoing a transformative period, with innovations that are reshaping how we create and experience the web. As a developer, staying current with these trends is crucial for building modern, competitive applications.</p>
+                <p>One of the most significant developments is the rise of Jamstack architecture, which separates the frontend from the backend and pre-renders content for improved performance and security. This approach, combined with serverless functions, allows for scalable, cost-effective web applications that can handle high traffic loads without the need for traditional server infrastructure.</p>
+                <p>Progressive Web Apps (PWAs) are another game-changer, blurring the line between web and native applications. With features like offline functionality, push notifications, and home screen installation, PWAs provide app-like experiences directly through the browser. This technology is particularly valuable for businesses looking to reach users across multiple platforms without the overhead of developing separate native apps.</p>
+                <p>WebAssembly is opening new possibilities for web applications, enabling near-native performance for computationally intensive tasks. This technology allows developers to write performance-critical code in languages like C++, Rust, or Go and run it in the browser, expanding the capabilities of web applications beyond what was previously possible with JavaScript alone.</p>
+                <p>As artificial intelligence becomes more accessible, we're seeing AI integration in web development tools and applications. From automated code generation to intelligent user interfaces that adapt to user behavior, AI is enhancing both the development process and the end-user experience.</p>
+                <p>Looking ahead, the convergence of web technologies with augmented and virtual reality promises to create immersive experiences that were once confined to specialized applications. WebXR, the API for creating VR and AR experiences on the web, is making these technologies more accessible to developers and users alike.</p>
+                <p>For developers, the key to thriving in this evolving landscape is continuous learning and adaptability. By embracing these emerging technologies and understanding their potential applications, we can create web experiences that are faster, more engaging, and more accessible than ever before.</p>
+                <a href="#" class="back-btn">← Back to Blog</a>
+            </div>
+
+            <div class="blog-full" id="blogFull2">
+                <h2>Designing for Accessibility</h2>
+                <div class="blog-date">May 22, 2023</div>
+                <p>Accessibility in web design is not just a technical requirement—it's a fundamental aspect of creating inclusive digital experiences. When we design with accessibility in mind, we ensure that our websites can be used by everyone, regardless of their abilities or the assistive technologies they use.</p>
+                <p>The Web Content Accessibility Guidelines (WCAG) provide a comprehensive framework for creating accessible web content. At its core, accessibility focuses on four principles: perceivable, operable, understandable, and robust. These principles guide developers in creating websites that can be perceived through various senses, operated through different input methods, understood by users of varying cognitive abilities, and compatible with current and future technologies.</p>
+                <p>Semantic HTML is the foundation of accessible web development. By using appropriate HTML elements like headings, lists, buttons, and form controls, we provide meaningful structure that assistive technologies can interpret. For example, screen readers use heading levels to navigate content, so maintaining a logical hierarchy is crucial for users who cannot see the visual layout of a page.</p>
+                <p>Color contrast is another critical aspect of accessibility. Text must have sufficient contrast against its background to be readable by users with low vision or color blindness. The WCAG recommends a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. Tools like color contrast checkers can help ensure compliance with these standards.</p>
+                <p>Keyboard navigation is essential for users who cannot use a mouse. All interactive elements should be accessible and usable through keyboard input alone, with visible focus indicators that show which element currently has focus. This includes ensuring logical tab order and providing skip links to help users navigate past repetitive content.</p>
+                <p>Alternative text for images is vital for users who rely on screen readers. Descriptive alt text should convey the content and function of images, while decorative images should have empty alt attributes to be ignored by assistive technologies. For complex images like charts or infographics, longer descriptions may be necessary.</p>
+                <p>Aria (Accessible Rich Internet Applications) attributes extend HTML's accessibility features, providing additional information about dynamic content and complex user interface components. When used correctly, ARIA can enhance the accessibility of modern web applications, but it should complement—not replace—semantic HTML.</p>
+                <p>Beyond technical implementation, accessibility requires empathy and user testing. Involving people with disabilities in the design and testing process provides invaluable insights into real-world accessibility challenges. Automated testing tools can catch many issues, but human testing is essential for identifying usability problems that algorithms might miss.</p>
+                <p>Creating accessible websites benefits everyone, not just users with disabilities. Clear navigation, readable text, and intuitive interfaces improve the experience for all users, particularly in challenging environments or on mobile devices. Moreover, accessible websites often perform better in search engine rankings, as many accessibility practices align with SEO best practices.</p>
+                <p>As web developers, we have a responsibility to create digital experiences that are inclusive and equitable. By prioritizing accessibility from the beginning of the development process, we can build a web that truly works for everyone.</p>
+                <a href="#" class="back-btn">← Back to Blog</a>
+            </div>
+
+            <div class="blog-full" id="blogFull3">
+                <h2>Optimizing Website Performance</h2>
+                <div class="blog-date">April 10, 2023</div>
+                <p>Website performance is a critical factor in user satisfaction, conversion rates, and search engine rankings. Studies consistently show that even small improvements in page load times can lead to significant increases in user engagement and revenue. In this comprehensive guide, I'll share proven techniques for optimizing website performance across multiple dimensions.</p>
+                <p>Image optimization is often the most impactful area for performance improvements. Large, unoptimized images can significantly increase page load times and consume unnecessary bandwidth. Modern techniques include using responsive images with the srcset attribute to serve appropriately sized images based on the user's device, implementing lazy loading to defer offscreen images, and choosing the right image format (WebP for modern browsers, JPEG for photographs, PNG for graphics with transparency, and SVG for vector graphics).</p>
+                <p>Code optimization is another crucial aspect of performance. Minifying CSS, JavaScript, and HTML files removes unnecessary characters without changing functionality, reducing file sizes. Bundling multiple files into single requests reduces HTTP overhead, while tree shaking eliminates unused code from JavaScript bundles. For CSS, critical CSS can be inlined in the document head to render above-the-fold content quickly, while non-critical styles are loaded asynchronously.</p>
+                <p>Browser caching strategies can dramatically improve repeat visit performance. By setting appropriate cache headers, static assets like images, CSS, and JavaScript files can be stored locally in the user's browser, eliminating the need to re-download them on subsequent visits. Service workers can take caching further by enabling offline functionality and custom cache strategies.</p>
+                <p>Content Delivery Networks (CDNs) distribute website assets across multiple servers worldwide, serving content from locations geographically closer to users. This reduces latency and improves load times, particularly for users far from the origin server. CDNs also provide additional benefits like DDoS protection and automatic image optimization.</p>
+                <p>Server-side optimizations can have a significant impact on performance. Implementing Gzip or Brotli compression reduces the size of text-based resources during transmission. Server-side rendering (SSR) or static site generation (SSG) can improve initial load times by sending fully rendered HTML to the browser, rather than requiring client-side JavaScript to construct the page.</p>
+                <p>Resource loading strategies help prioritize critical content. Preloading key resources like fonts or above-the-fold images ensures they are downloaded early in the page load process. Prefetching or preconnecting to important third-party resources can reduce latency when they are eventually needed. The loading attribute on images and iframes enables native lazy loading without JavaScript.</p>
+                <p>Performance monitoring is essential for maintaining optimal website speed. Tools like Google PageSpeed Insights, Lighthouse, and WebPageTest provide detailed performance audits and actionable recommendations. Setting up real user monitoring (RUM) helps track performance under actual user conditions, revealing issues that lab tests might miss.</p>
+                <p>Mobile optimization deserves special attention, as mobile users often face slower network connections and limited device capabilities. Progressive enhancement ensures core functionality works on all devices, while adaptive designs provide optimal experiences across different screen sizes and capabilities. Accelerated Mobile Pages (AMP) can deliver near-instant loading on mobile devices, though they come with design and functionality trade-offs.</p>
+                <p>Ultimately, performance optimization is an ongoing process rather than a one-time task. As content and functionality evolve, regular performance audits and monitoring are necessary to maintain optimal speed. By implementing these techniques and establishing performance budgets, developers can create websites that load quickly, respond rapidly to user interactions, and provide exceptional user experiences.</p>
+                <a href="#" class="back-btn">← Back to Blog</a>
+            </div>
+            <div class="blog-full" id="blogFull4">
+                <h2>Ink, Identity, and the Mississippi: How Saint Louis Helping Me Design Myself</h2>
+                <div class="blog-date">August 15, 2025</div>
+                <p>From the bustling streets of Bangalore to the vibrant art scene of Saint Louis, my journey as a  graphic designer has been nothing short of transformative.</p>
+                <p>I still remember the first time I held a stylus in an Adobe Photoshop lab at Saint Joseph College in Bangalore. The air was thick with the scent of coffee, old textbooks, and the quiet hum of creativity. I was wide-eyed, nervous, and utterly in love with the idea that I could turn thoughts into visuals—emotions into color palettes, stories into layouts. Over two years, I learned the fundamentals: typography that sings, composition that breathes, and design that means something. But theory, as they say, only takes you so far.</p>
+                <p> real test came when I decided to spend a semester abroad in Saint Louis, Missouri, not just to study, but to live design.Saint Louis greeted me with open arms and rusty-red sunsets over the Mississippi. It was a city that wore its history proudly—on its architecture, in its jazz notes drifting from basement clubs, and most strikingly, on its walls. Murals exploded around every corner, each one a declaration of identity, resilience, and community. I remember walking through the Delmar Loop one rainy afternoon, sketchbook in hand, utterly mesmerized by a massive piece depicting a young girl reaching toward a sky full of geometric constellations. It wasn’t just art—it was conversation. And I wanted to be part of it.</p>
+                <p>That mural became my inspiration. I started volunteering with a local arts nonprofit, helping design promotional materials for neighborhood festivals and youth workshops. My first project? A poster for a spoken word night. I thought I was ready. I used all the “right” fonts, balanced the colors meticulously, and even added a subtle texture I’d learned to create in my Bangalore classes. But when I showed it to the team, the feedback was gentle but firm: “It’s clean… but where’s the soul?”</p>
+                <p>That hit me hard. Back in school, I’d been praised for technical precision. But here, in this gritty, passionate city, people wanted feeling. They wanted authenticity. So I went back to the drawing board—literally. I spent nights at coffee shops talking to poets, dancers, and street artists. I listened to their stories, scribbled down phrases, and began to design not just for the eye, but for the heart.</p>
+                <p>My breakthrough came when I redesigned the festival’s entire visual identity, using hand-drawn elements, bold contrasts, and local landmarks as motifs. The final piece wasn’t perfect by academic standards, but it felt right. When a teenager at the event told me, “This poster looks like us,” I knew I’d finally bridged the gap between what I’d learned and what the world needed.</p>
+                <p>Saint Louis taught me that design isn’t just about aesthetics—it’s about empathy. It’s about asking: Who is this for? What do they need to feel seen, heard, celebrated? My time at Saint Joseph College gave me the tools, the discipline, and the courage to begin. But Saint Louis? It gave me the voice.</p>
+                <p>Now, back in Bangalore, I look at my old projects with fresh eyes. I still use the principles I learned in those sunlit classrooms. But I layer them with the rhythm of the Mississippi, the warmth of a stranger’s smile at a gallery opening, and the echo of jazz that followed me home in my dreams.</p>
+                <p>If you’re a creative soul wondering where your path might lead—take the leap. Study hard, yes. But then go out and live what you’ve learned. Because sometimes, the most beautiful designs aren’t made on a screen. They’re born on the streets, in conversations, and in the quiet moments when you realize you’ve finally found your place in the world—one brushstroke at a time.</p>
+                <a href="#" class="back-btn">← Back to Blog</a>
+            </div>
+            <div class="blog-full" id="blogFull5">
+                <h2>The Digital Dilemma: How Technology is Reshaping Human Rights</h2>
+                <div class="blog-date">August 15, 2025</div>
+                <p>e live in a world where a single tweet can spark a revolution, a facial recognition system can track your every move, and an algorithm can decide whether you get a job, a loan, or even asylum. Technology has become the invisible force shaping our lives—connecting us, empowering us, but also, at times, threatening the very rights we once thought were untouchable.</p>
+                <p>As someone deeply passionate about justice and human dignity, I’ve been both inspired and unsettled by the role technology plays in the fight for human rights. It’s not just about smartphones and social media—it’s about how these tools are used, who controls them, and who gets left behind.</p>
+                <p>Let’s start with the good news: technology has become one of the most powerful allies of human rights in the 21st century.</p>Remember the Arab Spring? Or the #BlackLivesMatter movement? These weren’t just protests—they were digital uprisings. Ordinary people used smartphones to document police brutality, social media to organize marches, and encrypted apps to protect their identities. In places where traditional media is silenced, platforms like Twitter, YouTube, and Signal have become lifelines—giving voice to the voiceless and shining a light on injustice.<p>
+                <p>Digital tools have also revolutionized how human rights organizations operate. Satellite imagery now exposes mass graves. AI helps analyze thousands of documents to uncover war crimes. Apps allow refugees to access legal aid and medical help. Technology has made it harder for oppressors to hide.</p>
+                <p>But here’s the twist: the same tools that liberate can also enslave.</p>Governments and corporations are using advanced surveillance systems to monitor citizens under the guise of “security.” In countries like China, facial recognition and AI-powered social credit systems track people’s behavior, limiting their freedom of movement and expression. In democracies, data mining by tech giants creates detailed profiles of our lives—what we think, who we love, where we go—often without our full consent.</p>
+                <p>And let’s talk about misinformation. While social media spreads truth, it also spreads lies—fast. Fake news, deepfakes, and algorithm-driven echo chambers can incite violence, manipulate elections, and erode trust in institutions. In Myanmar, Facebook was used to fuel hate speech against the Rohingya, contributing to a genocide. That’s not just a tech failure—it’s a human rights catastrophe.</p>
+                <p>Then there’s the digital divide. Not everyone has equal access to technology. Millions in rural areas, low-income communities, and conflict zones are left offline—excluded from education, healthcare, and civic participation. When the world goes digital, being disconnected means being disenfranchised.</p>
+                <p>So where do we go from here? The truth is, technology isn’t inherently good or bad—it’s a mirror. It reflects our values, our choices, our humanity. The challenge is to ensure it reflects justice, not oppression.</p>
+                <p>We need stronger laws to protect privacy and prevent abuse. We need ethical design—technology built with human dignity at its core. And we need digital literacy so people can navigate the online world safely and critically.
+                <p>As individuals, we can demand accountability from tech companies, support digital rights organizations, and use our own online presence responsibly. Every like, share, and comment carries weight. Use it wisely.</p>
+                <p>And that’s a fight worth clicking for.</p>
+                <a href="#" class="back-btn">← Back to Blog</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>Kakuma, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <a href="mailto:douglasdictor409@gmail.com">douglasdictor409@gmil.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <a href="tel:+1234567890">+2547555803938</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-text">
+                            <h3>Website</h3>
+                            <a href="#" target="_blank">Dictor.com</a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://x.com/OlameDicto26034"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/olamedictor37/"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/dictor-olame-5b9632275/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/Dictor-div"><i class="fa-brands fa-github"></i></i></a>
+                        <a href="https://www.tiktok.com/@dictor.olame"><i class="fa-brands fa-tiktok"></i></a> 
+                        <a href="https://www.facebook.com/dictorsanja.abdallah"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" name="submit-to-google-sheet">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                
+            </div>
+        </div>
+        <span id="msg"></span>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Dictor Olame</h3>
+                    <p>Web Developer & Designer passionate about creating beautiful, functional websites and applications that provide exceptional user experiences.</p>
+                    <div class="social-links">
+                        <a href="https://x.com/OlameDicto26034"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/olamedictor37/"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/dictor-olame-5b9632275/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/Dictor-div"><i class="fa-brands fa-github"></i></i></a>
+                        <a href="https://www.tiktok.com/@dictor.olame"><i class="fa-brands fa-tiktok"></i></a> 
+                        <a href="https://www.facebook.com/dictorsanja.abdallah"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#blog">My Blog</a></li>
+                        <li><a href="#contact">Contact Me</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">SEO Optimization</a></li>
+                        <li><a href="#">E-Commerce</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to my newsletter for the latest updates and insights.</p>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <input type="email" placeholder="Your Email" class="form-control">
+                    </div>
+                    <button class="submit-btn" style="margin-top: 0.5rem;">Subscribe</button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dictor Olame. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const closeBtn = document.getElementById('closeBtn');
+        const loginForm = document.getElementById('loginForm');
+        const userInfo = document.getElementById('userInfo');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const readMoreLinks = document.querySelectorAll('.read-more');
+        const backBtns = document.querySelectorAll('.back-btn');
+        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const adminLogout = document.getElementById('adminLogout');
+        const newPostBtn = document.getElementById('newPostBtn');
+        const blogForm = document.getElementById('blogForm');
+        const postForm = document.getElementById('postForm');
+        const cancelPost = document.getElementById('cancelPost');
+        const submitPost = document.getElementById('submitPost');
+        const formTitle = document.getElementById('formTitle');
+        const blogContainer = document.getElementById('blogContainer');
+
+        // State
+        let isLoggedIn = false;
+        let isAdmin = false;
+        let currentBlogId = null;
+        let blogPosts = [
+            {
+                id: 1,
+                title: "The Future of Web Development",
+                date: "June 15, 2023",
+                image: "python w.png",
+                content: "Web development is evolving at a rapid pace, with new frameworks and technologies emerging every year. From progressive web apps to serverless architectures, the landscape is changing how we build and deploy web applications. In this post, I'll explore the trends that are shaping the future of web development and how developers can stay ahead of the curve."
+            },
+            {
+                id: 2,
+                title: "Designing for Accessibility",
+                date: "May 22, 2023",
+                image: "122.png",
+                content: "Accessibility should be a priority in every web project, not an afterthought. In this article, I share practical tips and techniques for creating websites that are inclusive and usable by everyone, regardless of their abilities or the devices they use. From semantic HTML to ARIA roles, learn how to make your websites more accessible."
+            },
+            {
+                id: 3,
+                title: "Optimizing Website Performance",
+                date: "April 10, 2023",
+                image: "search.jpg",
+                content: "Website performance directly impacts user experience and search engine rankings. In this comprehensive guide, I cover the essential techniques for optimizing website speed, from image optimization and code minification to leveraging browser caching and content delivery networks. Implement these strategies to create faster, more efficient websites."
+            },
+            {
+                id: 4,
+                title: "Ink, Identity, and the Mississippi: How Saint Louis Helping Me Design Myself",
+                date: "August 15, 2025",
+                image: "Graduates.png",
+                content: "From Bangalore Online classrooms to Saint Louis murals, my graphic design journey took a bold leap across continents. Armed with creativity from Saint Joseph College and fueled by midnight brainstorming sessions, I turned theory into art on city walls and digital screens. This is how I found my voice—one sketch, one risk, and one unexpected adventure at a time."
+            }
+        ];
+
+        // Event Listeners
+        loginBtn.addEventListener('click', openLoginModal);
+        closeBtn.addEventListener('click', closeLoginModal);
+        loginForm.addEventListener('submit', handleLogin);
+        hamburger.addEventListener('click', toggleMobileMenu);
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                closeLoginModal();
+            }
+        });
+
+        // Read More functionality
+        readMoreLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const blogId = this.getAttribute('data-id');
+                showBlogFull(blogId);
+            });
+        });
+
+        // Back to blog list
+        backBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                hideBlogFull();
+            });
+        });
+
+        // Dropdown functionality
+        dropdownBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.parentElement.classList.toggle('active');
+            });
+        });
+
+        // Admin functionality
+        if (adminLogout) {
+            adminLogout.addEventListener('click', handleLogout);
+        }
+
+        if (newPostBtn) {
+            newPostBtn.addEventListener('click', showBlogForm);
+        }
+
+        if (cancelPost) {
+            cancelPost.addEventListener('click', hideBlogForm);
+        }
+
+        if (postForm) {
+            postForm.addEventListener('submit', handlePostSubmit);
+        }
+
+        // Functions
+        function openLoginModal() {
+            loginModal.style.display = 'flex';
+        }
+
+        function closeLoginModal() {
+            loginModal.style.display = 'none';
+            loginForm.reset();
+        }
+
+        function toggleMobileMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value; // In a real app, this would be hashed
+            
+            // Admin credentials check
+            if (username === 'dictorolame' && email === 'douglasdictor409@gmail.com') {
+                isLoggedIn = true;
+                isAdmin = true;
+                closeLoginModal();
+                updateAuthUI(username);
+                showAdminDashboard();
+            } else {
+                // Regular user login
+                isLoggedIn = true;
+                isAdmin = false;
+                closeLoginModal();
+                updateAuthUI(username);
+                hideAdminDashboard();
+            }
+        }
+
+        function updateAuthUI(username) {
+            loginBtn.style.display = 'none';
+            userInfo.style.display = 'block';
+            userInfo.textContent = `Welcome, ${username}!`;
+        }
+
+        function handleLogout() {
+            isLoggedIn = false;
+            isAdmin = false;
+            loginBtn.style.display = 'block';
+            userInfo.style.display = 'none';
+            hideAdminDashboard();
+            hideBlogForm();
+        }
+
+        function showAdminDashboard() {
+            if (isAdmin && adminDashboard) {
+                adminDashboard.style.display = 'block';
+            }
+        }
+
+        function hideAdminDashboard() {
+            if (adminDashboard) {
+                adminDashboard.style.display = 'none';
+            }
+        }
+
+        function showBlogForm() {
+            formTitle.textContent = 'Create New Blog Post';
+            document.getElementById('postId').value = '';
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postDate').value = '';
+            document.getElementById('myfile').value = '';
+            document.getElementById('postContent').value = '';
+            blogForm.style.display = 'block';
+        }
+
+        function hideBlogForm() {
+            blogForm.style.display = 'none';
+        }
+
+        function handlePostSubmit(e) {
+            e.preventDefault();
+            
+            const postId = document.getElementById('postId').value;
+            const title = document.getElementById('postTitle').value;
+            const dateInput = document.getElementById('postDate').value;
+            const image = document.getElementById('myfile').value;
+            const content = document.getElementById('postContent').value;
+            
+            // Format date
+            const date = new Date(dateInput);
+            const formattedDate = date.toLocaleDateString('en-US', { 
+                month: 'long', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+            
+            if (postId) {
+                // Edit existing post
+                const index = blogPosts.findIndex(post => post.id == postId);
+                if (index !== -1) {
+                    blogPosts[index] = { id: parseInt(postId), title, date: formattedDate, image, content };
+                }
+            } else {
+                // Create new post
+                const newId = Math.max(...blogPosts.map(p => p.id)) + 1;
+                blogPosts.unshift({ id: newId, title, date: formattedDate, image, content });
+            }
+            
+            hideBlogForm();
+            renderBlogPosts();
+        }
+
+        function renderBlogPosts() {
+            blogContainer.innerHTML = '';
+            
+            blogPosts.forEach(post => {
+                const blogCard = document.createElement('div');
+                blogCard.className = 'blog-card';
+                blogCard.innerHTML = `
+                    <img src="${post.image}" alt="${post.title}" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">${post.date}</div>
+                        <h3>${post.title}</h3>
+                        <p>${post.content}</p>
+                        <a href="#" class="read-more" data-id="${post.id}">Read More</a>
+                    </div>
+                `;
+                
+                blogContainer.appendChild(blogCard);
+                
+                // Add event listener to the new read more link
+                const readMoreLink = blogCard.querySelector('.read-more');
+                readMoreLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const blogId = this.getAttribute('data-id');
+                    showBlogFull(blogId);
+                });
+                
+                // Add admin controls if user is admin
+                if (isAdmin) {
+                    const adminActions = document.createElement('div');
+                    adminActions.className = 'admin-actions';
+                    adminActions.innerHTML = `
+                        <button class="admin-btn edit-btn" data-id="${post.id}">Edit</button>
+                        <button class="admin-btn delete-btn" data-id="${post.id}">Delete</button>
+                    `;
+                    blogCard.querySelector('.blog-content').appendChild(adminActions);
+                    
+                    // Add event listeners for edit and delete
+                    adminActions.querySelector('.edit-btn').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        editBlogPost(this.getAttribute('data-id'));
+                    });
+                    
+                    adminActions.querySelector('.delete-btn').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        deleteBlogPost(this.getAttribute('data-id'));
+                    });
+                }
+            });
+        }
+
+        function editBlogPost(id) {
+            const post = blogPosts.find(p => p.id == id);
+            if (post) {
+                formTitle.textContent = 'Edit Blog Post';
+                document.getElementById('postId').value = post.id;
+                document.getElementById('postTitle').value = post.title;
+                
+                // Convert date string back to YYYY-MM-DD format
+                const date = new Date(post.date);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                document.getElementById('postDate').value = `${year}-${month}-${day}`;
+                
+                document.getElementById('postImage').value = post.image;
+                document.getElementById('postContent').value = post.content;
+                blogForm.style.display = 'block';
+            }
+        }
+
+        function deleteBlogPost(id) {
+            if (confirm('Are you sure you want to delete this blog post?')) {
+                blogPosts = blogPosts.filter(post => post.id != id);
+                renderBlogPosts();
+            }
+        }
+
+        function showBlogFull(id) {
+            // Hide all blog full views
+            document.querySelectorAll('.blog-full').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show the specific blog full view
+            const blogFull = document.getElementById(`blogFull${id}`);
+            if (blogFull) {
+                blogFull.style.display = 'block';
+                
+                // Scroll to the blog full view
+                blogFull.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function hideBlogFull() {
+            document.querySelectorAll('.blog-full').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Scroll back to blog section
+            document.getElementById('blog').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize blog posts
+        renderBlogPosts();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (hamburger.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxSvwcj1qMaiJusxWVIsx0-FHR7hjKyihsmuXcQ7893ErdDR23JbrMWy-PXBrWjYw368w/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+
+    form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        msg.innerHTML = "Message sent successfully"
+        setTimeout(function(){
+            msg.innerHTML =""
+        },5000)
+        form.reset()
+    })
+    .catch(error => console.error('Error!', error.message))
+})
+</script>
+</body>
+</html>
