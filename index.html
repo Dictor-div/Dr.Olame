@@ -62,8 +62,10 @@
             width: 100px;
         }
 
-        .logo span {
-            color: var(--accent-color);
+        .logo:hover {
+            cursor: pointer;
+
+
         }
 
         .nav-menu {
@@ -610,9 +612,7 @@
         .contact-icon {
             font-size: 1.5rem;
             color: var(--primary-color);
-            background-color: var(--dark-color);
-            min-width: 50px;
-            border-radius: 50%;
+            
         }
 
         .contact-text h3 {
@@ -1111,7 +1111,7 @@
     <!-- ----------------------------------Navbar ----------------------------->
     <nav class="navbar">
         <div class="container nav-container">
-            <img src="./Dictor logo.png"  class="logo">
+            <img a href="#about" src="./Dictor logo.png"  class="logo"></a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
@@ -1410,6 +1410,15 @@
                         <a href="#" class="read-more" data-id="5">Read More</a>
                     </div>
                 </div>
+                <div class="blog-card">
+                    <img src="./effect of tech on huan right.png" alt="Blog 6" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">August 17, 2025</div>
+                        <h3>Beyond the Brushstroke: Unlocking True Creativity in Graphic Design</h3>
+                        <p>Creativity in graphic design isn’t just about looking good—it’s about feeling something. From bold colors to quiet details, it’s the spark that turns a simple idea into a visual story. In this post, I dive into what fuels true design creativity and how to keep it alive when inspiration feels far away. 🎨✨</p>
+                        <a href="#" class="read-more" data-id="6">Read More</a>
+                    </div>
+                </div>
             </div>
 
             <!-- Full Blog Content -->
@@ -1485,6 +1494,31 @@
                 <p>We need stronger laws to protect privacy and prevent abuse. We need ethical design—technology built with human dignity at its core. And we need digital literacy so people can navigate the online world safely and critically.
                 <p>As individuals, we can demand accountability from tech companies, support digital rights organizations, and use our own online presence responsibly. Every like, share, and comment carries weight. Use it wisely.</p>
                 <p>And that’s a fight worth clicking for.</p>
+                <a href="#" class="back-btn">← Back to Blog</a>
+            </div>
+            <div class="blog-full" id="blogFull6">
+                <h2>Beyond the Brushstroke: Unlocking True Creativity in Graphic Design</h2>
+                <div class="blog-date">August 1, 2025</div>
+                <p>Let’s be honest—when most people think of graphic design, they picture sleek logos, trendy fonts, and Instagram-perfect layouts. But as any designer will tell you, great design isn’t just about aesthetics. It’s about creativity—the messy, unpredictable, deeply human force that breathes life into every pixel and vector.</p>
+                <p>I remember my first real design project after finishing my course at Saint Joseph College in Bangalore. I was tasked with creating a poster for a local music festival. I had all the tools: a solid foundation in color theory, mastery of design software, and a portfolio full of textbook-perfect assignments. But when I sat down to create, I froze. My mind was full of rules—but empty of soul.</p>
+                <p>That’s when I realized: creativity isn’t just a skill you learn. It’s a mindset you nurture.So, what is creativity in graphic design, really? It’s not just making things “look cool.” It’s solving problems with imagination. It’s finding a way to make someone feel joy, curiosity, or even rebellion—just by looking at a poster, a website, or a brand logo. It’s about storytelling without words. It’s turning silence into color, emotion into shape.</p>
+                <p>Creativity is what makes a nonprofit’s campaign go viral, not because it’s polished, but because it resonates. It’s why we remember Apple’s “Think Different” ads decades later. It’s why a hand-drawn logo for a neighborhood café feels more inviting than a perfectly aligned font from a template.</p>
+                <p>But here’s the thing—creativity doesn’t always show up on command.Some days, ideas flow like rain in monsoon season. Other days, it’s like digging through dry soil with bare hands. I’ve spent hours staring at a blank screen, convinced I’d lost my spark forever. Sound familiar? Over time, I’ve learned that creativity isn’t something you wait for—it’s something you invite in.</p>
+                <p>Here’s how I keep mine alive:</p>
+                <p>1. Step away from the screen.
+                The best ideas don’t come from scrolling Pinterest. They come from walking through a market, listening to street musicians, or flipping through an old photo album. Creativity thrives on lived experience.</p>
+                <p> Embrace “bad” ideas.
+                I keep a sketchbook full of doodles, half-baked concepts, and wild experiments. Some are terrible. But buried in that mess? Gold. Creativity grows in freedom, not perfection.</p>
+                <p>3. Collaborate.
+                Talk to writers, photographers, even strangers at a café. A single conversation can crack open a whole new perspective. Design isn’t a solo act—it’s a dialogue.</p>
+                <p>4. Break the rules (sometimes).
+                Yes, alignment matters. Contrast matters. But so does surprise. Try using clashing colors. Overlap text. Hand-letter a headline. Creativity often lives in the “mistakes.”</p>
+                <p>5. Give yourself permission to rest.
+                <p>Burnout kills creativity faster than anything. When I’m stuck, I take a walk, watch a film, or just sit quietly. The mind works in mysterious ways—often when you’re not forcing it.</p>
+                <p>And let’s not forget the role of culture and emotion. My time in Bangalore taught me to see beauty in chaos—the vibrant saris hanging in alleys, the graffiti on temple walls, the way street vendors arrange fruit like living art. That visual richness didn’t just influence my style—it rewired my imagination.</p>
+                <p>Creativity in graphic design isn’t about reinventing the wheel. It’s about seeing the wheel in a new light. It’s about taking what’s familiar and making it feel true—to the brand, to the audience, to you.</p>
+                <p>Because at its core, design is human. And creativity? That’s our superpower.So the next time you’re stuck, don’t panic. Open a window. Breathe. Let the world in. Then pick up your pen, stylus, or mouse—and let your heart lead your hand.</p>
+                Because the most creative designs aren’t made with software.They’re made with courage, curiosity, and a little bit of magic. ✨</p>
                 <a href="#" class="back-btn">← Back to Blog</a>
             </div>
         </div>
@@ -1604,7 +1638,7 @@
                         <input type="email" placeholder="Your Email" class="form-control">
                     </div>
                     <label>
-                    <input type="checkbox" checked="checked" name="subscribe"> Daily Newsletter
+                    <input type="checkbox" checked="checked" style="color: var(--accent-color);" name="subscribe"> Daily Newsletter
                     </label>
                     <button class="submit-btn" style="margin-top: 0.5rem;" value="subscribe">Subscribe</button>
                 </div>
@@ -1676,6 +1710,13 @@
                 date: "August 17, 2025",
                 image: "effect of tech on huan right.png",
                 content: "Technology shapes our world in seconds—but is it protecting or undermining our human rights? From surveillance to social media activism, the digital age is a double-edged sword. In this post, I explore how innovation empowers and endangers our freedoms—and what we can do to ensure tech serves humanity, not the other way around."
+            },
+            {
+                id: 6,
+                title: "Beyond the Brushstroke: Unlocking True Creativity in Graphic Design",
+                date: "August 17, 2025",
+                image: "Douglas_graphics.png",
+                content: "Creativity in graphic design isn’t just about looking good—it’s about feeling something. From bold colors to quiet details, it’s the spark that turns a simple idea into a visual story. In this post, I dive into what fuels true design creativity and how to keep it alive when inspiration feels far away. 🎨✨"
             }
         ];
 
