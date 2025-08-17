@@ -59,6 +59,7 @@
             font-weight: 700;
             color: white;
             text-decoration: none;
+            width: 100px;
         }
 
         .logo span {
@@ -609,7 +610,9 @@
         .contact-icon {
             font-size: 1.5rem;
             color: var(--primary-color);
+            background-color: var(--dark-color);
             min-width: 50px;
+            border-radius: 50%;
         }
 
         .contact-text h3 {
@@ -631,19 +634,13 @@
         .contact-form {
             background-color: #f8f9fa;
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 50%;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-            font-weight: 500;
-        }
 
         .form-control {
             width: 100%;
@@ -1114,7 +1111,7 @@
     <!-- ----------------------------------Navbar ----------------------------->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#home" class="logo">Dictor Olame<span>.</span></a>
+            <img src="./Dictor logo.png"  class="logo">
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
@@ -1476,7 +1473,7 @@
             </div>
             <div class="blog-full" id="blogFull5">
                 <h2>The Digital Dilemma: How Technology is Reshaping Human Rights</h2>
-                <div class="blog-date">August 15, 2025</div>
+                <div class="blog-date">August 1, 2025</div>
                 <p>e live in a world where a single tweet can spark a revolution, a facial recognition system can track your every move, and an algorithm can decide whether you get a job, a loan, or even asylum. Technology has become the invisible force shaping our lives—connecting us, empowering us, but also, at times, threatening the very rights we once thought were untouchable.</p>
                 <p>As someone deeply passionate about justice and human dignity, I’ve been both inspired and unsettled by the role technology plays in the fight for human rights. It’s not just about smartphones and social media—it’s about how these tools are used, who controls them, and who gets left behind.</p>
                 <p>Let’s start with the good news: technology has become one of the most powerful allies of human rights in the 21st century.</p>Remember the Arab Spring? Or the #BlackLivesMatter movement? These weren’t just protests—they were digital uprisings. Ordinary people used smartphones to document police brutality, social media to organize marches, and encrypted apps to protect their identities. In places where traditional media is silenced, platforms like Twitter, YouTube, and Signal have become lifelines—giving voice to the voiceless and shining a light on injustice.<p>
@@ -1538,18 +1535,16 @@
                 </div>
                 <form name="submit-to-google-sheet" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
                     <div class="form-group">
-                            <input type="hidden" name="access_key" value="c7264d89-10f5-4910-b9fa-3d2c4137be39">
-
-                       
-                        <input type="text" id="Name" class="form-control" placeholder="Name" required>
+                        <input type="hidden" name="access_key" value="c7264d89-10f5-4910-b9fa-3d2c4137be39">
+                        <input type="text" name="Name" class="form-control" placeholder="Name" required></div>
+                
+                    <div class="form-group">
+                        
+                        <input type="email" name="Email" class="form-control" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         
-                        <input type="email" id="Email" class="form-control" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        
-                        <input type="text" id="Subject" class="form-control" placeholder="Subject" required>
+                        <input type="text" name="Subject" class="form-control" placeholder="Subject" required>
                     </div>
                     <div class="form-group">
                         
@@ -1559,6 +1554,7 @@
                 </form>
                 
             </div>
+        </div>
         </div>
         <span id="msg"></span>
     </section>
@@ -1607,7 +1603,10 @@
                     <div class="form-group" style="margin-top: 1rem;">
                         <input type="email" placeholder="Your Email" class="form-control">
                     </div>
-                    <button class="submit-btn" style="margin-top: 0.5rem;">Subscribe</button>
+                    <label>
+                    <input type="checkbox" checked="checked" name="subscribe"> Daily Newsletter
+                    </label>
+                    <button class="submit-btn" style="margin-top: 0.5rem;" value="subscribe">Subscribe</button>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1670,6 +1669,13 @@
                 date: "August 15, 2025",
                 image: "Graduates.png",
                 content: "From Bangalore Online classrooms to Saint Louis murals, my graphic design journey took a bold leap across continents. Armed with creativity from Saint Joseph College and fueled by midnight brainstorming sessions, I turned theory into art on city walls and digital screens. This is how I found my voice—one sketch, one risk, and one unexpected adventure at a time."
+            },
+            {
+                id: 5,
+                title: "The Digital Dilemma: How Technology is Reshaping Human Rights",
+                date: "August 17, 2025",
+                image: "effect of tech on huan right.png",
+                content: "Technology shapes our world in seconds—but is it protecting or undermining our human rights? From surveillance to social media activism, the digital age is a double-edged sword. In this post, I explore how innovation empowers and endangers our freedoms—and what we can do to ensure tech serves humanity, not the other way around."
             }
         ];
 
@@ -1990,7 +1996,7 @@
         msg.innerHTML = "Message sent successfully"
         setTimeout(function(){
             msg.innerHTML =""
-        },4000)
+        },2000)
         form.reset()
     })
     .catch(error => console.error('Error!', error.message))
